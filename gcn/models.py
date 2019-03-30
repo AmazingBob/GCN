@@ -161,6 +161,27 @@ class GCN(Model):
                                             act=tf.nn.relu,
                                             dropout=True,
                                             logging=self.logging))
+        
+        self.layers.append(GraphConvolution(input_dim=FLAGS.hidden1,
+                                            output_dim=FLAGS.hidden1,
+                                            placeholders=self.placeholders,
+                                            act=tf.nn.relu,
+                                            dropout=True,
+                                            logging=self.logging))
+
+        self.layers.append(GraphConvolution(input_dim=FLAGS.hidden1,
+                                            output_dim=FLAGS.hidden1,
+                                            placeholders=self.placeholders,
+                                            act=tf.nn.relu,
+                                            dropout=True,
+                                            logging=self.logging))
+                                            
+        self.layers.append(GraphConvolution(input_dim=FLAGS.hidden1,
+                                            output_dim=FLAGS.hidden1,
+                                            placeholders=self.placeholders,
+                                            act=tf.nn.relu,
+                                            dropout=True,
+                                            logging=self.logging))
 
         self.layers.append(GraphConvolution(input_dim=FLAGS.hidden1,
                                             output_dim=self.output_dim,
@@ -168,6 +189,5 @@ class GCN(Model):
                                             act=lambda x: x,
                                             dropout=True,
                                             logging=self.logging))
-
     def predict(self):
         return tf.nn.softmax(self.outputs)
